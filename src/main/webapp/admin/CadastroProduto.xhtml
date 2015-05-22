@@ -1,0 +1,68 @@
+<ui:composition template="/WEB-INF/template/LayoutPadraoAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+                                                                 xmlns:o="http://omnifaces.org/ui">
+
+
+	<ui:define name="titulo">Cadastro de Produto</ui:define>
+
+	<ui:define name="corpo">
+		<f:metadata>
+			<o:viewParam name="produto" value="#{cadastroProdutoBean.produto}" />
+
+
+		</f:metadata>
+		<h:form>
+
+
+			<h:inputHidden value="#{cadastroProdutoBean.produto.id}" />
+
+
+			<h1>Cadastro de Produto</h1>
+			<p:toolbar style="margin-top: 40px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/admin/CadastroProduto" />
+					<p:commandButton value="Salvar"
+						action="#{cadastroProdutoBean.cadastrar()}" update="@form" />
+					<!--	 disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" -->
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+
+					<p:button value="Pesquisa"  outcome="/admin/PesquisaProdutos" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+
+				<p:outputLabel style="width: 15px;" for="nome" value="Nome Produto" />
+				<p:inputText required="true" requiredMessage="Nome Obrigatorio"
+					id="nome" label="Nome Produto"
+					value="#{cadastroProdutoBean.produto.nome}" />
+
+
+
+				<p:outputLabel value="Valor Unitario" for="valorUnitario" />
+				<p:inputText id="valorUnitario" required="true"
+					requiredMessage="Valor Unitario Obrigatorio" size="10"
+					maxlength="10" value="#{cadastroProdutoBean.produto.valorUnitario}" />
+
+
+				<p:outputLabel value="Estoque" for="estoque" />
+				<p:inputMask id="estoque" label="Estoque" mask="9?9999"
+					value="#{cadastroProdutoBean.produto.quantidadeEstoque}" />
+
+			</p:panelGrid>
+
+
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>

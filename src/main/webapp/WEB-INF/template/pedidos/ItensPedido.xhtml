@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<p:dataTable value="#{cadastroPedidoBean.itens}" var="item" rowIndexVar="linha" id="tabelaItens">
+		
+		
+		
+		<p:column headerText="Produto" >
+					<p:inputText  value="" style=" width: 99%" />
+			
+			
+			 
+		</p:column>
+		<p:column headerText="Valor unitário" style="text-align: right; width: 120px">
+			<h:outputText value="R$ 0,00">
+				<f:convertNumber type="currency"/>
+			</h:outputText>
+		</p:column>
+		
+		
+		<p:column headerText="Quantidade" style="text-align: center; width: 100px">
+			<p:inputText size="8" value="1" >
+			
+			</p:inputText>
+		</p:column>
+				
+		<p:column headerText="Estoque" style="text-align: center; width: 100px">
+			<h:outputText value="10"  />
+		</p:column>
+		
+		<p:column headerText="Valor total" style="text-align: right; width: 100px">
+			<h:outputText value="R$ 0,00">
+				<f:convertNumber type="currency"/>
+			</h:outputText>
+		</p:column>
+		
+		<p:columnGroup type="footer">
+			<p:row>
+				<p:column colspan="4" footerText="Subtotal" style="text-align: right" />
+				<p:column style="text-align: right">
+				<!--	<f:facet name="footer">
+					 	<h:outputText value="#{cadastroPedidoBean.pedido.valorSubtotal}">
+						 <f:convertNumber type="currency"/>
+						</h:outputText>
+					</f:facet> -->	
+				</p:column>
+			</p:row>
+		</p:columnGroup>
+	</p:dataTable>
+  	
+</ui:composition>

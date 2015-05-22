@@ -1,0 +1,119 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+
+	<ui:define name="titulo">Cadastro Cliente</ui:define>
+
+
+	<ui:define name="corpo">
+		<f:metadata>
+			<o:viewParam name="cliente" value="#{cadastroClienteBean.cliente}" />
+
+
+		</f:metadata>
+
+		<h:form>
+
+<h1>Cadastro Cliente</h1>
+
+<h:inputHidden value="#{cadastroClienteBean.cliente.id}" />
+			<p:toolbar style="margin-top: 40px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/admin/CadastroCliente" />
+					<p:commandButton value="Salvar"
+						action="#{cadastroClienteBean.salvar()}" update="@form" />
+					<!--	 disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" -->
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+
+					<p:button value="Pesquisa" outcome="/admin/PesquisaCliente"/>
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:messages autoUpdate="true" />
+			<p:panel header="Dados Pessoais">
+
+				<h:panelGrid columns="2" columnClasses="label, value">
+
+
+					<p:outputLabel for="nome" value="Nome" />
+					<p:inputText required="true" requiredMessage="Nome Obrigatorio"
+						id="nome" label="Nome Candidato"
+						value="#{cadastroClienteBean.cliente.nome}" />
+
+
+
+
+					<p:outputLabel value="Cep" for="cep" />
+					<p:inputMask id="cep" mask="99999-999"
+						value="#{cadastroClienteBean.cliente.cep}" />
+
+					<p:outputLabel value="Logradouro" for="logradouro" />
+					<p:inputText id="logradouro" size="70"
+						value="#{cadastroClienteBean.cliente.logradouro}" />
+
+					<p:outputLabel value="Complemento" for="comp" />
+					<p:inputText id="comp" size="70"
+						value="#{cadastroClienteBean.cliente.complemento}" />
+
+					<p:outputLabel value="Numero" for="num" />
+					<p:inputMask id="num" label="Numero" mask="9?9999999999"
+						value="#{cadastroClienteBean.cliente.numero}" />
+
+					<p:outputLabel value="Cidade" for="cidade" />
+					<p:inputText id="cidade" size="30"
+						value="#{cadastroClienteBean.cliente.cidade}" />
+
+					<p:outputLabel value="Estado" for="estado" />
+
+					<p:selectOneMenu id="estado" style="width:125px" required="true"
+						requiredMessage="Estado Obrigatorio "
+						value="#{cadastroClienteBean.estadoEndereco}">
+
+						<f:selectItem itemLabel="Estado" itemValue="" />
+						<f:selectItem itemLabel="AC" itemValue="AC" />
+						<f:selectItem itemLabel="AL" itemValue="AL" />
+						<f:selectItem itemLabel="AP" itemValue="AP" />
+						<f:selectItem itemLabel="AM" itemValue="AM" />
+						<f:selectItem itemLabel="BA" itemValue="BA" />
+						<f:selectItem itemLabel="CE" itemValue="CE" />
+						<f:selectItem itemLabel="DF" itemValue="DF" />
+						<f:selectItem itemLabel="ES" itemValue="ES" />
+						<f:selectItem itemLabel="GO" itemValue="GO" />
+						<f:selectItem itemLabel="MA" itemValue="MA" />
+						<f:selectItem itemLabel="MT" itemValue="MT" />
+						<f:selectItem itemLabel="MS" itemValue="MS" />
+						<f:selectItem itemLabel="MG" itemValue="MG" />
+						<f:selectItem itemLabel="PA" itemValue="PA" />
+						<f:selectItem itemLabel="PB" itemValue="PB" />
+						<f:selectItem itemLabel="PR" itemValue="PR" />
+						<f:selectItem itemLabel="PE" itemValue="PE" />
+						<f:selectItem itemLabel="PI" itemValue="PI" />
+						<f:selectItem itemLabel="RJ" itemValue="RJ" />
+						<f:selectItem itemLabel="RN" itemValue="RN" />
+						<f:selectItem itemLabel="RS" itemValue="RS" />
+						<f:selectItem itemLabel="RO" itemValue="RO" />
+						<f:selectItem itemLabel="RR" itemValue="RR" />
+						<f:selectItem itemLabel="SC" itemValue="SC" />
+						<f:selectItem itemLabel="SP" itemValue="SP" />
+						<f:selectItem itemLabel="SE" itemValue="SE" />
+						<f:selectItem itemLabel="TO" itemValue="TO" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+			</p:panel>
+
+
+
+
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>

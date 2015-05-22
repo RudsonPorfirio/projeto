@@ -1,0 +1,55 @@
+<!--    <p:autoComplete id="cliente" size="40" dropdown="true" 
+        	value="#{cadastroPedidoBean.pedido.cliente}" completeMethod="#{cadastroPedidoBean.completarCliente}"
+        	var="cliente" itemLabel="#{cliente.nome}" itemValue="#{cliente}" forceSelection="true" 
+        	disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" />
+         -->
+
+
+
+
+styleClass="produto-tabela" value="#{cadastroPedidoBean.produtoLinhaEditavel}"
+				completeMethod="#{cadastroPedidoBean.completarProduto}"
+				var="produto" itemLabel="#{produto.nome}" itemValue="#{produto}" 
+				forceSelection="true" rendered="#{not item.produtoAssociado}">
+				<p:ajax event="itemSelect" update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal" 
+					listener="#{cadastroPedidoBean.carregarProdutoLinhaEditavel}"
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         <!--   	
+        	<p:ajax event="change" process="@this" update="totalPedido"
+        		listener="#{cadastroPedidoBean.recalcularPedido}" />  -->
+
+
+
+
+
+
+
+	style="#{item.estoqueInsuficiente ? 'color: red' : ''}"/>
+			
+			<h:graphicImage library="images" name="alerta.png" id="semEstoque"
+				style="vertical-align: bottom; margin-left: 5px" 
+				rendered="#{item.estoqueInsuficiente}" />
+				
+			<p:tooltip for="semEstoque" value="Estoque insuficiente"
+				rendered="#{item.estoqueInsuficiente}"
+
+
+
+
+
+
+
+
+
+
+<!-- 	<p:ajax event="change" process="@this"
+					update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal"
+					listener="#{cadastroPedidoBean.atualizarQuantidade(item, linha)}" /> -->

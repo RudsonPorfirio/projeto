@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script type="text/javascript" src="js/jquery-1.2.6.pack.js"></script>
+	<script type="text/javascript"
+		src="js/jquery.maskedinput-1.1.4.pack.js" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">Página Principal do Administrador</ui:insert></title>
+	<h:outputStylesheet library="css" name="sistema.css" />
+</h:head>
+
+
+<h:body>
+	<p:ajaxStatus styleClass="ajax-status">
+
+		<f:facet name="status">
+			<h:graphicImage library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+
+	</p:ajaxStatus>
+
+
+
+	<header>
+
+
+	<div style="float: left;">
+		<h:link outcome="/admin/Principal.xhtml">
+			<h:graphicImage library="images" name="logo-fast-transport.png" />
+		</h:link>
+	</div>
+
+
+
+
+	<div style="float: right; margin-right: 110px">
+
+
+
+		<h:form style="dispay: inline-block" id="frmsair">
+
+
+			<p:menubar styleClass="menu-sistema">
+
+				<p:submenu label="Cadastrar">
+					<p:menuitem value="Cliente" outcome="/admin/CadastroCliente.xhtml" />
+					<p:menuitem value="Produto" outcome="/admin/CadastroProduto.xhtml" />
+					<p:menuitem value="Vendedor" outcome="/admin/CadastroVendedor.xhtml" />
+					<p:menuitem value="Pedido" outcome="/admin/CadastroPedido.xhtml" />
+					
+
+				</p:submenu>
+				<p:submenu label="Pesquisar">
+					<p:menuitem value="Usuarios" outcome="/admin/PesquisaCliente.xhtml" />
+					<p:menuitem value="Pedidos"  outcome="/admin/PesquisaPedidos.xhtml" />
+					<p:menuitem value="Produtos" outcome="/admin/PesquisaProdutos.xhtml" />
+					<p:menuitem value="Vendedor" outcome="/admin/PesquisaVendedor.xhtml" />
+
+				</p:submenu>
+
+
+				<p:menuitem value="Sair" update=":frmsair:confirmacaoSairDialog"
+					oncomplete="confirmacaoSair.show()" />
+
+
+			</p:menubar>
+
+			<p:confirmDialog header="Logout"
+				message="Tem certeza que deseja Sair?" widgetVar="confirmacaoSair"
+				id="confirmacaoSairDialog">
+
+
+				<p:button value="Não"
+					onclick="confirmacaoSair.hide(); return false;" />
+				<p:commandButton value="Sim" oncomplete="confirmacaoSair.hide();"
+					action="#{autenticadorBean.registraSaida()}" />
+			</p:confirmDialog>
+
+
+		</h:form>
+
+
+	</div>
+
+<span
+					style="float: left; height: 30px; line-height: 30px; margin-right: 60px">
+					Olá #{seguranca.nomeUsuario} ! </span>
+	<div style="clear: both;"></div>
+
+	</header>
+	
+	<div id="areaSistemaAdmin">
+
+		<ui:insert name="corpo">
+
+
+		</ui:insert>
+
+	</div>
+
+	<p:separator style="margin-top: 900px" />
+
+	<footer> Sistemas Reserva de vagas para transposte alternativo
+	<!--<a href="http://bit.ly/Y8saFl" target="_blank">www.algaworks.com</a>-->
+	</footer>
+</h:body>
+</html>

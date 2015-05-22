@@ -1,0 +1,114 @@
+<ui:composition template="/WEB-INF/template/LayoutPadraoAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="titulo">Cadastro Vendedor</ui:define>
+
+
+	<ui:define name="corpo">
+
+
+		<h:form>
+			<h:inputHidden value="#{cadastroVendedorBean.usuario.id}" />
+
+
+			<h1>Cadastro de Vendedor</h1>
+			<p:toolbar style="margin-top: 40px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/admin/CadastroVendedor" />
+					<p:commandButton value="Salvar"
+						action="#{cadastroVendedorBean.salvar()}" update="@form" />
+					<!--	 disabled="#{cadastroPedidoBean.pedido.naoAlteravel}" -->
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+
+					<p:button value="Pesquisa" outcome="/admin/PesquisaVendedor" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:messages autoUpdate="true" />
+			<p:panel header="Dados Pessoais">
+
+
+				<h:panelGrid columns="2" columnClasses="label, value">
+
+
+					<p:outputLabel for="nome" value="Nome" />
+					<p:inputText required="true" requiredMessage="Nome Obrigatorio"
+						id="nome" label="Nome Candidato"
+						value="#{cadastroVendedorBean.usuario.nome}" />
+
+					<p:outputLabel for="codigo" value="Codigo" />
+					<p:inputText required="true" requiredMessage="Codigo Obrigatorio"
+						value="#{cadastroVendedorBean.usuario.codigo}" id="codigo"
+						label="codigo" />
+
+					<p:outputLabel for="senha" value="Senha" />
+					<p:inputText required="true" requiredMessage="senha Obrigatorio"
+						id="senha" label="Nome Candidato"
+						value="#{cadastroVendedorBean.usuario.senha}" />
+
+
+				</h:panelGrid>
+
+
+			</p:panel>
+
+
+			<p:panel header="Informações Contato ">
+
+				<h:panelGrid columns="2" columnClasses="label, value">
+
+
+					<p:outputLabel for="email" value="Email" />
+					<p:inputText type="email" id="email"
+						value="#{cadastroVendedorBean.usuario.email}" />
+
+
+					<p:outputLabel for="tCelular" value="Celular: " />
+					<p:inputMask id="tCelular" label="Celular"
+						value="#{cadastroVendedorBean.usuario.tCelular}"
+						mask="(99) 99999-9999" />
+
+
+					<p:outputLabel for="skype" value="Skype" />
+					<p:inputText id="skype" label="Skype"
+						value="#{cadastroVendedorBean.usuario.skype}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+
+			<p:panel header="Informações Conta ">
+
+				<h:panelGrid columns="2" columnClasses="label, value">
+
+
+					<p:outputLabel for="ag" value="Agencia: " />
+					<p:inputMask id="ag" label="Agencia:" mask="9999"
+						value="#{cadastroVendedorBean.usuario.agencia}" />
+
+					<p:outputLabel for="op" value="Operadora " />
+					<p:inputMask id="op" label="Operadora" mask="999"
+						value="#{cadastroVendedorBean.usuario.operadora}" />
+
+
+					<p:outputLabel for="cc" value="CC " />
+					<p:inputMask id="cc" label="CC" mask="99999999-9"
+						value="#{cadastroVendedorBean.usuario.cc}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+
+
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>
